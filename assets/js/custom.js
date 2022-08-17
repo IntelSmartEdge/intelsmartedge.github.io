@@ -114,6 +114,9 @@ jQuery(document).ready(function () {
             return false;
         }
     });
+    jQuery.validator.addMethod("alphabetNumberSpecial", function (value, element) {
+        return this.optional(element) || value == value.match(/^[a-zA-Z0-9\s.,&#/\\]+$/);
+    });
 
     jQuery("#requestAccess").validate({
         errorElement: 'small',
@@ -182,12 +185,14 @@ jQuery(document).ready(function () {
             interest: {
                 required: true,
                 maxlength: 300,
-                alphabetOnlyName: true,
+                //alphabetOnlyName: true,
+                alphabetNumberSpecial: true,
             },
             use_case: {
                 required: true,
                 maxlength: 300,
-                alphabetOnlyName: true,
+                //alphabetOnlyName: true,
+                alphabetNumberSpecial: true,
             },
             commercialize: {
                 required: true
@@ -237,13 +242,15 @@ jQuery(document).ready(function () {
                 required: "Please enter your interested features.",
                 //minlength: "Please enter your interested features minimum 3 characters.",
                 maxlength: "Please enter your interested features maximum 300 characters.",
-                alphabetOnlyName: "Please enter valid interested features.",
+                //alphabetOnlyName: "Please enter valid interested features.",
+                alphabetNumberSpecial: "Please enter valid interested features.",
             },
             use_case: {
                 required: "Please enter your use cases for edge.",
                 //minlength: "Please enter your use cases for edge minimum 3 characters.",
                 maxlength: "Please enter your use cases for edge maximum 300 characters.",
-                alphabetOnlyName: "Please enter valid use cases for edge.",
+                //alphabetOnlyName: "Please enter valid use cases for edge.",
+                alphabetNumberSpecial: "Please enter valid use cases for edge.",
             },
             commercialize: {
                 required: "Please select the option.",
