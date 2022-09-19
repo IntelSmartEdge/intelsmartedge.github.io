@@ -1,0 +1,97 @@
+
+.topHeadBox{
+    p, ul li a{
+        font-size: 16px;
+        line-height: 1.4;
+    }
+    .boxHeadBox{
+        p{
+            text-transform: initial;
+        }
+        strong{
+            font-size: 16px;
+        }
+    }
+}
+
+.uk-section{
+    &.topHeadBox{
+        padding-bottom: 50px;
+        padding-top: 50px;
+    }
+}
+.topHeadBox {
+    padding-bottom: 60px;
+    background-color: $bgcolor;
+
+    .uk-margin-medium-top{
+        margin-top: 0px!important;
+    }
+
+        small {
+            line-height: 24px;
+        }
+        .uk-card-mx {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #fff;
+
+            .uk-card-header{
+                background-color: #f8f8f8;
+                padding: 20px;
+
+                    .uk-card-title {                        
+                   
+                        span{
+                            color: #818181;
+                            font-size: 24px;
+                            font-style: italic;
+                            display: block;
+                        }
+                    }
+                    
+            }
+            
+            .uk-card-body {text-transform: capitalize;}
+            .uk-card-footer{padding: 5px 10px;}
+
+            .uk-padding {
+                padding: 15px;
+            }
+            
+            }
+
+            .uk-card-footer{
+                margin-top: auto;
+                background-color: #f8f8f8;
+            }
+        }
+.mx-section-footer{
+    background-color:#f8f8f8;    
+    small, small a{
+        line-height: 24px;
+        padding: 10px;
+        font-size: 12px;
+       
+    }
+    
+    .lead, h2{
+        color: #fff;
+    }
+    a{color: #0068b5;     display: contents;}
+    
+}
+.uk-section-footer{
+    background-color:#0068b5;      
+
+    .lead, h2{
+        color: #fff;
+        }
+    a{
+        color: #0068b5; background-color: #f8f8f8;}
+    
+}
+.boxHeadExplore{
+    margin-bottom: 60px;
+}

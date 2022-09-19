@@ -17,7 +17,7 @@
   {% assign title = pageName | replace: "-"," " | replace: "_"," " | split: ".md" | first %}
   {% assign pageTitle = title | split: ' ' %}
   {% capture pageTitleUpper %}{% for word in pageTitle %}{{ word | capitalize }} {% endfor %}{% endcapture %}
-  <title>Intel® Smart Edge Open | {{ pageTitleUpper }}</title>
+  <title>Intel® Smart Edge | {{ pageTitleUpper }}</title>
   {% seo title=false %}
   <meta property="og:image" content="{% if site.logo contains 'http' %}{{ site.logo }}{% else %}{{ site.uploads | absolute_url }}{{ site.logo }}{% endif %}"/>
   <!-- <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}"> -->
@@ -26,6 +26,9 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
   <script type="text/javascript" src="{{ "/assets/js/jquery.js" | relative_url }}"></script>
   <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/instantsearch.min.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/bootstrap.js" | relative_url }}"></script>
+  <script src="{{ "/assets/js/doc-search.js" | relative_url }}"></script>
   {% if page.hero.search or site.navbar.search %}
     {% include search-js.html %}
   {% endif %}

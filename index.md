@@ -6,6 +6,8 @@ hero:
     search: false
 ---
 
+{% include boxesTop.html columns="3" title="" subtitle="" %}
+
 {% include boxesHead.html columns="3" title="" subtitle="" %}
 
 {% include boxesFive.html columns="3" title="" subtitle="" %}
