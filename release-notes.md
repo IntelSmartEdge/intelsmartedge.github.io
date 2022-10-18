@@ -3,10 +3,84 @@ layout: page
 permalink: /release-notes/
 ---
 
+<!--{% include formspree.html email="my_name@gmail.com" redirect="/thanks/" name="true" subject="true" %}-->
 <h1 class="uk-text-left">Release Notes</h1>
+
+<div class="noteLeft"> 
+    <p>September 30th, 2022</p> 
+</div> 
+ 
+<div class="noteRight"> 
+     <h3>Intel® Smart Edge for Enterprises – Edge Node v6.0, Controller v11.0</h3>      
+    <p>This is the first release of Intel® Smart Edge for Enterprises, that includes the Intel Smart Edge Node software v6.0 and Intel Smart Edge Controller software v11.0. This release is on a new code base that will eventually replace the current Intel Smart Edge Node software v5 and Intel Smart Edge Controller software v10</p> 
+    <p>To get more information about Intel Smart Edge for Enterprises and to initiate the process of obtaining a license, visit <a href="https://www.intel.com/content/www/us/en/edge-computing/smart-edge.html">www.intel.com/smartedge</a></p> 
+ 
+ <h3>Highlights</h3> 
+    <ul class="uk-margin-small-top"> 
+    <li>
+    <b>New Edge Node software</b> utilizing Smart Edge Kubernetes Engine operating on an Ubuntu operating system</li> 
+    <li>A <b>new GUI (Graphical User Interface) dashboard</b> - allows you to manage 5G clusters, access points and devices through a CRUD (Create, Read, Update & Delete) model</li> 
+    <li>New <b> automated provisioning process</b> to deploy the Smart Edge Controller software and the Smart Edge Node software onto a bare metal server operating on the Smart Edge Kubernetes Engine.</li> 
+    <li>Support for Kubernetes <b>Persistent Volume Claims</b> (PVC) for deployed edge apps</li> 
+    <li><b>Configuration persistence</b> in the Controller - maintains 5G Core cluster configuration even through Controller lifecycle updates and restart, supports backup of the operational state of services</li> 
+     <li><b>APIs (Application Programming Interfaces) for general telemetry alerts</b> and for 5G telemetry – provides visibility into the running state of the 5G Core through APIs to retrieve time-series metrics (number, bandwidth available, platform resource usage)</li> 
+     <li><b>DNS (Domain Name Service) forwarding</b> – enables configuration of alternate DNS servers, so DNS requests can be forwarded outside the edge cluster, and user devices attached to one cluster can connect with edge applications deployed on a different cluster</li> 
+     <li><b>Calico-BGP integration</b> – this allows edge applications to be access outside of the cluster by external systems</li> 
+     <li><b>Secure communications</b> between the Edge Cluster and Controller – ensures that the connection between the UI (User Interface) and the client device is secure, and that the Controller gateway presents a TLS (Transport Layer Security) certificate that can be verified at either end</li> 
+     <li><b>Includes a commercial 5G Core software on the edge</b> node with the required 5G Core License Manager deployed within the Smart Edge Controller node. </li> 
+     <li><b>User documentation</b> is available within the Smart Edge Controller software web interface</li> 
+     <li>Support for <b>edge app deployments using Helm charts</b> to support container (using containerd) and virtual machine (using KubeVirt) based apps</li> 
+    </ul> 
+
+<table> 
+        <thead>    
+            <tr>    
+                <th><strong>Issue</strong></th>    
+                <th><strong>Mitigation</strong></th>    
+            </tr>  
+        </thead> 
+        <tbody>  
+        <tr> 
+        <td style="width:55%">5G License Manager dashboard <span class="smt2"><a href="https://dlm-ui.controller.intel.corp:30443">https://dlm-ui.controller.intel.corp:30443 </a></span> displays 502 Bad Gateway after license has been uploaded</td> 
+        <td>Reboot the Smart Edge Controller</td> 
+        </tr> 
+        <tr> 
+            <td>Sometimes UE to application traffic might stop working after edge node reboot </td> 
+            <td>Determine if the 5G core pod is in an error state use the example pod status API query in the controller document - observability section to retrieve the status of each pod on the cluster. In case of 5G Core application failing to deploy due to lack of SR-IOV VF resource intel.com/fronthaul_c0p0, reboot the 5G core node. Occasionally during startup, the sriov-network-configuration pod fails to query the K8s API for a configmap containing the supported NIC devices. This results in the device being reported as unsupported</td> 
+        </tr> 
+        <tr> 
+            <td>Failures during provisioning the deployment stage due to timeouts</td> 
+            <td>Ensure that the connectivity of the network is not impacted by extremely slow speed. In slow performing networks the pulling of docker images from the Internet/docker mirror may be unreasonably slow and the executed deployment tasks may exceed the allocated limits</td> 
+        </tr> 
+        <tr> 
+        <td>Network Agent on the Edge Node is loading client certificate when it starts instead of checking for a new certificate continuously. The Network Agent will stop working 30 days after initial deployment</td> 
+        <td>Restart Network Agent pod or if a user is not able to perform k8s pod restart then reboot the server</td> 
+        </tr> 
+        <tr> 
+            <td>
+                Network monitoring graphs showcasing traffic in and out of 5G Core pod are not implemented.
+            </td> 
+            <td>
+                When viewing the Network traffic for the 5G Core on a two cluster deployment (one node per cluster), the Network graph on the Performance page of the controller UI for the 5G Core Edge Node will not show the data sent to and received from the gNodeB. This is due to an SR-IOV interface being used for the 5G Core's N2/N3 interface. To see the data rate entering and leaving on this 5G Core interface, query the telemetry API for the <span class="smt">pcn_throughput_octets_sum</span> metric
+            </td> 
+        </tr> 
+        <tr> 
+            <td>
+                The Alerts indicator on the Clusters page of the controller UI is not enabled and does not report active alerts</td> 
+            <td>
+                Current active alerts can be obtained through the Alerts REST API
+            </td> 
+        </tr> 
+    </tbody> 
+</table> 
+
+ 
+</div>
+
 <div class="noteLeft">
     <p>June 29th, 2022</p>
 </div>
+
 
 <div class="noteRight">
     <h3>Secure Access Service Edge (SASE) Experience Kit (22.05)</h3>
@@ -66,9 +140,11 @@ permalink: /release-notes/
     <br>
 </div>
 
+
 <div class="noteLeft">
     <p>June 25th, 2022</p>
 </div>
+
 
 <div class="noteRight">
     <h3>Private Wireless Experience Kit (22.04)</h3>
@@ -98,6 +174,7 @@ permalink: /release-notes/
 <div class="noteLeft">
     <p>May 15th, 2022</p>
 </div>
+
 
 <div class="noteRight">
     <h3>Developer Experience Kit (22.03)</h3>
@@ -223,7 +300,7 @@ permalink: /release-notes/
 <div class="noteLeft">
     <p>September 30th, 2021</p>
 </div>
-<div class="noteRight">
+<div class="noteRight" id="prev-note">
     <h3>21.09 Updates</h3>
     <p>We are pleased to announce the first release Intel&reg; Smart Edge Open.</p>
     <p>Built from an OpenNESS foundation and representing more than two years of development, the 21.09 release of Intel&reg; Smart Edge Open introduces several technical improvements including a new Developer Experience Kit and an upgraded experience kit for creating 5G private wireless networks.</p>
@@ -269,6 +346,8 @@ permalink: /release-notes/
         <li>Radisys CU support for multiple SR-IOV virtual functions has not been validated.</li>
     </ul>
 </div>
+
+
 <div class="noteLeft">
     <p>Previous</p>
 </div>
