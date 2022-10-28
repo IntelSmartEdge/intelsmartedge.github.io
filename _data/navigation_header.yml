@@ -8,7 +8,7 @@ left:
   #   url: /docs/product-overview/
 
   - title: Documentation
-    url: /docs/product-overview/
+    url: https://IntelSmartEdge.github.io/docs/product-overview/
 
   - title: Release Notes
     url: /release-notes/
