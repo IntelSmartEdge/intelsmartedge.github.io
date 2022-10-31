@@ -1,1 +1,1 @@
-#smart-edge-open.github.io
+#intelsmartedge.io
